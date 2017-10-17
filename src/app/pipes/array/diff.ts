@@ -3,7 +3,8 @@ import {PipeTransform, Pipe} from '@angular/core';
 @Pipe({name: 'diff'})
 export class DiffPipe implements PipeTransform {
 
-  transform(input: any, ...args: any[]): any[] {
+  transform(_input: any, ...args: any[], key): any[] {
+    const input = key ? _.map(_input, key) : _input;
     if (!Array.isArray(input)) {
       return input;
     }
